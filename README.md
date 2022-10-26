@@ -33,6 +33,9 @@ Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/a
   - https://javascript.plainenglish.io/add-modify-and-delete-properties-from-javascript-object-7ad07e7be1bb <br>
   - https://sabe.io/blog/javascript-sort-array-objects-property <br>
   </details>
+  
+  ### Woensdag
+  Tijdens de werkgroep hebben wij met SVG gewerkt door middel van een emoji na te maken van scratch met svg codes: https://codepen.io/klaudij/pen/ZERYbZy?editors=1010
 
  
   
