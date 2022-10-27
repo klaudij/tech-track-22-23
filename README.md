@@ -32,6 +32,7 @@ Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/a
   - https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript <br>
   - https://javascript.plainenglish.io/add-modify-and-delete-properties-from-javascript-object-7ad07e7be1bb <br>
   - https://sabe.io/blog/javascript-sort-array-objects-property <br>
+  - https://github.com/cmda-tt/course-22-23/tree/main/week-1 <br>
   </details>
   
   ### Woensdag
@@ -47,6 +48,7 @@ Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/a
   <summary>Bronnen dat mij geholpen hebben bij de opdrachten:</summary>
   - klasgenoten 😤 <br>
   -  https://www.valentinog.com/blog/html-table/ <br>
+  - https://github.com/cmda-tt/course-22-23/tree/main/week-1 <br>
   </details>
  
 
