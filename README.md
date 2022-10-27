@@ -37,8 +37,19 @@ Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/a
   ### Woensdag
   Tijdens de werkgroep hebben wij met SVG gewerkt door middel van een emoji na te maken van scratch met svg codes: https://codepen.io/klaudij/pen/ZERYbZy?editors=1010
 
- 
+
+
+  ### Donderdag
+  Het uitgewerkte huiswerk van donderdag is op mijn codepen te vinden : https://codepen.io/klaudij/pen/qBKEQyp?editors=1011
   
+  #### Bronnen:
+  <details>
+  <summary>Bronnen dat mij geholpen hebben bij de opdrachten:</summary>
+  - klasgenoten 😤 <br>
+  -  https://www.valentinog.com/blog/html-table/ <br>
+  </details>
+ 
+
   
   
   
