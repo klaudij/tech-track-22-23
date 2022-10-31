@@ -50,7 +50,7 @@ Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/a
   -  https://www.valentinog.com/blog/html-table/ <br>
   - https://github.com/cmda-tt/course-22-23/tree/main/week-1 <br>
   - https://thomaswilburn.github.io/viz-book/js-templates.html <br>
-  - mijn hersenen 🤓 <br>
+  - mijn hersenennn 🤓 <br>
   </details>
   
  
