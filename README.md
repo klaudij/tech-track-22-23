@@ -1,4 +1,4 @@
-# Go to Wiki for more details ->
+# Go to Wiki for more details (ಥ﹏ಥ) ->
 ## tech-track-22-23
-**Auteur:** Klaudija Miskovic
+**Author:** Klaudija Miskovic 
 
