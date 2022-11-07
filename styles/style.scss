@@ -1,0 +1,224 @@
+@font-face {
+	font-family: 'game_of_thronesregular';
+	src: url("../fonts/game_of_thrones-webfont.woff2") format("woff2"),
+		url("../fonts/game_of_thrones-webfont.woff") format("woff");
+	font-weight: lighter;
+	font-style: normal;
+}
+
+
+$c-black: #2A2A2A;
+$c-white: #fff;
+$c-grey: #454545;
+$c-grey--dark: #303030;
+$c-grey--light: #EAEAEA;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+@keyframes onHoverAnimation {
+  0% {
+      background-color: #FF0;  
+  }
+  90% {
+      background-color: #AD310B;
+  }
+  100%{
+    background-color: #FF0; 
+  }
+}
+
+body {
+  // animation-name: onHoverAnimation;
+  // animation-duration: 3s;
+  // animation-timing-function: linear;
+  // animation-iteration-count: infinite;
+
+
+  background: url("../images/p5.png");
+  background-color: $c-grey--light;
+  font-family: verdana;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Work Sans', sans-serif;
+
+  text-align: center;
+  color: $c-white;
+}
+
+main {
+  margin-top: 100px;
+}
+
+
+h1{
+  font-family: 'game_of_thronesregular','Work Sans', sans-serif;
+  font-weight: 800;
+  position: relative;
+}
+
+h2{
+  font-weight: 500;
+}
+
+.theDead {
+  margin: 50px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  width: 100%;
+  // background-color: pink;
+  padding: 10px;
+  gap: 5px;
+
+  .personWhoDied {
+    width: 20px;
+    height: 20px;
+    background-color: $c-black;
+    border-radius: 50%;
+    transition: .3s;
+    position: relative;
+    z-index: 9999;
+
+    .moreInfo {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap:0 30px;
+
+      width: 490px;
+      height: 210px;
+      background-color: white;
+      color: $c-black;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      position: absolute;
+      top: -218px;
+      left: -234px;
+      z-index: 1;
+      text-align: left;
+      padding: 10px 20px;
+      display: none;
+      transform: .3s;
+
+      &:before{
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 234px;
+        rotate: 45deg;
+        background-color: white;
+        width: 20px;
+        height: 20px;
+        z-index: -99999;
+      }
+
+      h2 {
+        grid-area: 2 / 1 / 3 / 3;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        // background-color: aquamarine;
+      }
+      p {
+        // font-weight: 800;
+        font-size: 16px;
+        margin: 5px 0;
+
+        &:first-of-type{
+          grid-area: 1 / 1 / 2 / 2; 
+          font-weight: 800;
+          // margin-top: 15px
+          // background-color: rgb(161, 163, 221);
+        }
+        &:nth-of-type(2){
+
+          grid-area: 3 / 1 / 4 / 2;
+          // background-color: pink;
+        }
+        &:nth-of-type(3){
+
+          grid-area: 4 / 1 / 5 / 2;
+          // background-color: rgb(177, 66, 84);
+        }
+        &:nth-of-type(4){
+
+          grid-area: 5 / 1 / 6 / 3;
+          // background-color: rgb(38, 132, 41);
+        }
+        &:nth-of-type(5){
+
+          grid-area: 3 / 2 / 4 / 3;
+          // background-color: rgb(198, 171, 19);
+        }
+
+        &:nth-of-type(6){
+
+          grid-area: 4 / 2 / 5 / 3;
+          // background-color: rgb(215, 192, 255);
+        }
+      }
+    }
+
+    &:hover{
+      scale: 1.1;
+      cursor: pointer;
+      transition: .3s;
+
+      .moreInfo{
+        scale: .9;
+       display: grid;
+        transition: .3s;
+      }
+    }
+  }
+}
+
+
+.logo {
+  width: 25vw;
+	height: 25vw;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	background: url("../images/targaryen-logo.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: -1;
+	opacity: 0.2;
+}
+
+table {
+  margin-top: 100px;
+  background-color: $c-white;
+  border-radius: 10px;
+  border-collapse: collapse;
+  color: white;
+  /*   border:3px solid black; */
+
+  th {
+    background-color: $c-grey;
+    padding: 10px 100px 5px 10px;
+    text-align: left;
+  }
+
+  td {
+    padding: 10px 0 10px 10px;
+  }
+
+  tr {
+    background-color: $c-grey--dark;
+
+    &:last-child {
+      padding-bottom: 30px;
+    }
+  }
+}
