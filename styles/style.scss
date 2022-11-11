@@ -1,36 +1,24 @@
-@font-face {
-	font-family: 'game_of_thronesregular';
-	src: url("../fonts/game_of_thrones-webfont.woff2") format("woff2"),
-		url("../fonts/game_of_thrones-webfont.woff") format("woff");
-	font-weight: lighter;
-	font-style: normal;
-}
+/***************/
+/****IMPORTS****/
+/***************/
+@import 'config/colors';
+@import 'config/animations';
+@import 'config/font';
+@import 'mixins/basic-layout';
 
 
-$c-black: #2A2A2A;
-$c-white: #fff;
-$c-grey: #454545;
-$c-grey--dark: #303030;
-$c-grey--light: #EAEAEA;
 
+/**************/
+/**CSS REMEDY**/
+/**************/
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
+  @include remedy-layout;
 }
 
-@keyframes onHoverAnimation {
-  0% {
-      background-color: #FF0;  
-  }
-  90% {
-      background-color: #AD310B;
-  }
-  100%{
-    background-color: #FF0; 
-  }
-}
+
+/**********************/
+/****** STYLING *******/
+/**********************/
 
 body {
   // animation-name: onHoverAnimation;
@@ -38,21 +26,21 @@ body {
   // animation-timing-function: linear;
   // animation-iteration-count: infinite;
 
-
   background: url("../images/p5.png");
-  background-color: $c-grey--light;
-  font-family: verdana;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Work Sans', sans-serif;
+  background-color: $c-grey--dark;
 
+  @include flex-box-centerd-column;
+
+  font-family: 'Work Sans', sans-serif;
   text-align: center;
   color: $c-white;
+  position: relative;
+  transition: background 1s ease;
 }
 
 main {
   margin-top: 100px;
+  @include flex-box-centerd-column;
 }
 
 
@@ -60,10 +48,28 @@ h1{
   font-family: 'game_of_thronesregular','Work Sans', sans-serif;
   font-weight: 800;
   position: relative;
+  opacity: 0;
+  animation-name: show-up;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: .3ss;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 h2{
   font-weight: 500;
+}
+
+p {
+  font-family: 'game_of_thronesregular','Work Sans', sans-serif;
+  font-size: 13px;
+
+  margin-bottom: 20px;
+}
+
+.deaths{
+  margin-top: 20px;
 }
 
 .theDead {
@@ -87,7 +93,7 @@ h2{
     position: relative;
     z-index: 9999;
 
-    .moreInfo {
+    .toolTip {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(5, 1fr);
@@ -105,7 +111,7 @@ h2{
       z-index: 1;
       text-align: left;
       padding: 10px 20px;
-      display: none;
+      visibility: hidden;
       transform: .3s;
 
       &:before{
@@ -128,6 +134,7 @@ h2{
       }
       p {
         // font-weight: 800;
+        font-family: 'Work Sans', sans-serif;
         font-size: 16px;
         margin: 5px 0;
 
@@ -171,9 +178,9 @@ h2{
       cursor: pointer;
       transition: .3s;
 
-      .moreInfo{
+      .toolTip{
         scale: .9;
-       display: grid;
+        visibility: visible;
         transition: .3s;
       }
     }
@@ -181,20 +188,108 @@ h2{
 }
 
 
-.logo {
+.logo-background {
   width: 25vw;
 	height: 25vw;
 	top: 60%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	position: absolute;
-	background: url("../images/targaryen-logo.png");
+	// background: url("../images/targaryen-logo.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	z-index: -1;
 	opacity: 0.2;
 }
+
+
+
+.person {
+  margin-top: 120px;
+  #icon{
+    scale: 1.5;
+  }
+}
+
+.icon:hover {
+  opacity: .7;
+}
+
+
+.sword {
+  @include flex-box-centerd-row;
+  position: relative;
+  margin: 10px 0 10px;
+  width: 200px;
+  opacity: 0;
+
+  animation-name: bounce, shake;
+  animation-duration: 1s, 4.2s,;
+  animation-iteration-count: 1, infinite;
+  animation-delay: 2.5s, 3s;
+  animation-timing-function: linear, linear;
+  animation-fill-mode: forwards, forwards;
+
+  p {
+    margin: 40px 0 0 5px;
+  }
+
+  #crown {
+    fill: $c-white;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    animation: none;
+  }
+  svg{
+    width:15px;
+    height:auto;
+
+    .st0{fill:none;}
+    .st1{fill:#A93000;}
+    .st2{fill:#AF3E20;}
+    .st3{fill:#822500;}
+    .st4{fill:#8E3A24;}
+    .st5{fill:#FFD802;}
+    .st6{fill:#DFBD00;}
+    .st7{fill:#F8F8F8;}
+    .st8{fill:#D6D5D5;}
+    .st9{fill:#949494;}
+    .st10{fill:#C6C6C6;}
+
+    &:nth-of-type(2){
+      animation: chop-right 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+      animation-delay: 3s;
+      transform: scaleX(-1);
+      margin-left: -10px;
+    }
+
+    &:nth-of-type(3){
+      animation: chop-left 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+      animation-delay: 3s;
+      margin-left: 7px;
+      transform: scaleX(-1);
+    }
+  }
+
+
+}
+
+
+
+#tooltip {
+  position: absolute;
+  background: #444444;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 0.5em;
+  box-shadow: 5px 3px 14px -1px rgba(0,0,0,0.46);
+  border-radius: 5px;
+  opacity: 0;
+}
+
+
 
 table {
   margin-top: 100px;
