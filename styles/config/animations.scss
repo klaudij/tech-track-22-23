@@ -1,4 +1,4 @@
-  
+/// ANIMATION FOR G.O.T <P>   
 @keyframes bounce {
   0% {
     opacity: 0;
@@ -19,7 +19,7 @@
   }
 }
 
-
+///ANIMATION FOR THE H1
 @keyframes show-up {
   0%{
     opacity: 0;
@@ -68,6 +68,8 @@
 }
 
 
+
+///ANIMATION FOR G.O.T <P>
 @keyframes shake {
   0%, 25% { filter: blur(0); }
   25.5% { filter: blur(1vmin); }
@@ -81,15 +83,5 @@
   31% { transform: translateX(0); }
 }
 
-/// ANIMATION FOR THE BACKGROUND
-@keyframes onHoverAnimation {
-  0% {
-      background-color: #FF0;  
-  }
-  90% {
-      background-color: #AD310B;
-  }
-  100%{
-    background-color: #FF0; 
-  }
-}
+
+

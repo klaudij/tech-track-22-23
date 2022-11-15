@@ -19,13 +19,9 @@
 /**********************/
 /****** STYLING *******/
 /**********************/
+/* basic styling*/
 
 body {
-  // animation-name: onHoverAnimation;
-  // animation-duration: 3s;
-  // animation-timing-function: linear;
-  // animation-iteration-count: infinite;
-
   background: url("../images/p5.png");
   background-color: $c-grey--dark;
 
@@ -44,33 +40,240 @@ main {
 }
 
 
-h1{
+h1 {
   font-family: 'game_of_thronesregular','Work Sans', sans-serif;
   font-weight: 800;
+  font-size: 2rem;
   position: relative;
-  opacity: 0;
-  animation-name: show-up;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
-  animation-delay: .3ss;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
 }
 
-h2{
+h2 {
+  font-family: 'game_of_thronesregular','Work Sans', sans-serif;
   font-weight: 500;
 }
 
+
 p {
-  font-family: 'game_of_thronesregular','Work Sans', sans-serif;
   font-size: 13px;
 
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
-.deaths{
-  margin-top: 20px;
+
+
+
+/********************/
+/****** TITEL *******/
+/********************/
+.titel {
+  @include flex-box-centerd-row;
+  position: relative;
+  margin: 10px 0 10px;
+  width: 200px;
+  opacity: 0;
+
+  animation-name: bounce, shake;
+  animation-duration: 1s, 4.2s,;
+  animation-iteration-count: 1, infinite;
+  animation-delay: 2.5s, 3s;
+  animation-timing-function: linear, linear;
+  animation-fill-mode: forwards, forwards;
+
+  p {
+    font-family: 'game_of_thronesregular','Work Sans', sans-serif;
+    margin: 40px 0 0 5px;
+  }
+
+  #crown {
+    fill: $c-white;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    animation: none;
+  }
+
+  svg {
+    width:15px;
+    height:auto;
+
+    .st0{fill:none;}
+    .st1{fill:#A93000;}
+    .st2{fill:#AF3E20;}
+    .st3{fill:#822500;}
+    .st4{fill:#8E3A24;}
+    .st5{fill:#FFD802;}
+    .st6{fill:#DFBD00;}
+    .st7{fill:#F8F8F8;}
+    .st8{fill:#D6D5D5;}
+    .st9{fill:#949494;}
+    .st10{fill:#C6C6C6;}
+
+    &:nth-of-type(2) {
+      animation: chop-right 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+      animation-delay: 3s;
+      transform: scaleX(-1);
+      margin-left: -10px;
+    }
+
+    &:nth-of-type(3) {
+      animation: chop-left 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+      animation-delay: 3s;
+      margin-left: 7px;
+      transform: scaleX(-1);
+    }
+  }
 }
+
+
+
+/**********************/
+/****** SECTIONS*******/
+/**********************/
+
+/* F I R S T  S E C T I O N*/
+section:first-of-type {
+
+
+  h1 {
+    opacity: 0;
+    animation-name: show-up;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  .death-counter {
+    z-index: 1;
+    // position: fixed;
+    // top: 0;
+    margin-top: 20px;
+  
+    p {
+      font-size: 1.3em;
+    }
+  }
+
+  .allDeaths {
+    margin-top: 60px;
+    scale: 1;
+  
+  use:not(.oneDeathHover) {
+    display: none;
+  }
+  }
+  
+  .oneDeathHover:hover {
+    opacity: .7;
+  }
+}
+
+
+/* S E C O N D  S E C T I O N*/
+section:nth-of-type(2) {
+
+  h2{
+    margin-top: 10px;
+  }
+
+  .node:hover {
+    stroke-width: 6px !important;
+    opacity: 1 !important;
+  }  
+}
+
+
+
+/******************************/
+/****** BACKGROUND LOGO *******/
+/******************************/
+.logo-background {
+  width: 25vw;
+	height: 25vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: fixed;
+	background: url("../images/targaryen-logo.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: -1;
+	opacity: 0.2;
+}
+
+
+/**********************/
+/****** TOOLTIP *******/
+/**********************/
+#tooltip1 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: stretch;
+  align-items: flex-start;
+  
+
+  background-color: white;
+  color: $c-black;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: absolute;
+  z-index: 1;
+  text-align: left;
+  padding: 10px 20px;
+  opacity: 0;
+
+  // &:before{
+  //   content: "";
+
+  //   position: absolute;
+  //   bottom: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   bottom: -18px;
+  //   border-radius: 1px;
+  //   rotate: 45deg;
+  //   background-color: $c-white;
+  //   width: 20px;
+  //   height: 20px;
+  //   z-index: -99999;
+  // }
+
+  p {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+
+    &:first-of-type {
+      margin:0 0 10px 0;
+    }
+  }
+  h2 {
+    font-family: 'Work Sans', sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+}
+
+
+/*********************/
+/****** FOOTER *******/
+/*********************/
+footer {
+  font-size: 13px;
+  margin: 200px 0 20px 0;
+}
+
+
+
+
+
+
+
 
 .theDead {
   margin: 50px 0 0 0;
@@ -188,106 +391,11 @@ p {
 }
 
 
-.logo-background {
-  width: 25vw;
-	height: 25vw;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	position: absolute;
-	// background: url("../images/targaryen-logo.png");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	z-index: -1;
-	opacity: 0.2;
-}
 
 
 
-.person {
-  margin-top: 120px;
-  #icon{
-    scale: 1.5;
-  }
-}
-
-.icon:hover {
-  opacity: .7;
-}
 
 
-.sword {
-  @include flex-box-centerd-row;
-  position: relative;
-  margin: 10px 0 10px;
-  width: 200px;
-  opacity: 0;
-
-  animation-name: bounce, shake;
-  animation-duration: 1s, 4.2s,;
-  animation-iteration-count: 1, infinite;
-  animation-delay: 2.5s, 3s;
-  animation-timing-function: linear, linear;
-  animation-fill-mode: forwards, forwards;
-
-  p {
-    margin: 40px 0 0 5px;
-  }
-
-  #crown {
-    fill: $c-white;
-    width: 30px;
-    position: absolute;
-    top: 20px;
-    animation: none;
-  }
-  svg{
-    width:15px;
-    height:auto;
-
-    .st0{fill:none;}
-    .st1{fill:#A93000;}
-    .st2{fill:#AF3E20;}
-    .st3{fill:#822500;}
-    .st4{fill:#8E3A24;}
-    .st5{fill:#FFD802;}
-    .st6{fill:#DFBD00;}
-    .st7{fill:#F8F8F8;}
-    .st8{fill:#D6D5D5;}
-    .st9{fill:#949494;}
-    .st10{fill:#C6C6C6;}
-
-    &:nth-of-type(2){
-      animation: chop-right 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-      animation-delay: 3s;
-      transform: scaleX(-1);
-      margin-left: -10px;
-    }
-
-    &:nth-of-type(3){
-      animation: chop-left 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-      animation-delay: 3s;
-      margin-left: 7px;
-      transform: scaleX(-1);
-    }
-  }
-
-
-}
-
-
-
-#tooltip {
-  position: absolute;
-  background: #444444;
-  color: #ffffff;
-  font-family: sans-serif;
-  padding: 0.5em;
-  box-shadow: 5px 3px 14px -1px rgba(0,0,0,0.46);
-  border-radius: 5px;
-  opacity: 0;
-}
 
 
 
