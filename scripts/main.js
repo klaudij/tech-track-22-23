@@ -323,8 +323,8 @@ function generateIcons() {
               trigger: ".allDeaths", /// Here i want the scroll to be triggered on the SVG
               start:"top 133px", // Positioning for when the scoll trigger should start
               end: "bottom 400px",// Positioning for when the scoll trigger should end
-              //markers: true, ///  only during development!
-              scrub: 1, /// Locks the animation to scroll. 
+              //markers: true, /// only during development!
+              scrub: 1, ///Locks the animation to scroll. 
               //toggleActions:"restart pause pause pause" /// 1. When entering the screen 2. Forward passed the end point 3. For when scrolling back after 2 4. when scrolling all the way back pass the start.
           
             }, /// Animation that plays for each icon when it appears on screen
