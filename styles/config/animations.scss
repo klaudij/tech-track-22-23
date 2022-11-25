@@ -1,87 +1,11 @@
-/// ANIMATION FOR G.O.T <P>   
-@keyframes bounce {
-  0% {
-    opacity: 0;
-    transform: scale(0.9, 1.1) translateY(-100px);
-  }
-  20% {
-    transform: scale(1.05, 0.95) translateY(0); 
-  }
-  43% {
-    transform: scale(1, 1) translateY(-7px);
-  }
-  61% {
-    transform: scale(1, 1) translateY(0); 
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1, 1) translateY(0); 
-  }
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }
-
-///ANIMATION FOR THE H1
-@keyframes show-up {
-  0%{
-    opacity: 0;
-    transform: scale(0.4);
-  }
-  100%{
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-
-///ANIMATION FOR THE SWORD
-@keyframes chop-right {
-  25% {
-    transform: translate(-10%, -20%) rotate(-15deg);
-  }
-  26%, 30% {
-    transform: translate(5%, 6%) rotate(125deg);
-    z-index: 2;
-  }
-  42%, 80% {
-    transform: translate(10%, 5%) rotate(120deg);
-    z-index: 4;
-  }
-  100% {
-    z-index: 4;
-  }
-}
-
-@keyframes chop-left {
-  25% {
-    transform: translate(-10%, -20%) rotate(15deg);
-  }
-  26%, 30% {
-    transform: translate(5%, 6%) rotate(-125deg);
-    z-index: 2;
-  }
-  42%, 80% {
-    transform: translate(-10%, 5%) rotate(-120deg);
-    z-index: 4;
-  }
-  100% {
-    z-index: 4;
-  }
-}
-
-
-
-///ANIMATION FOR G.O.T <P>
-@keyframes shake {
-  0%, 25% { filter: blur(0); }
-  25.5% { filter: blur(1vmin); }
-  26% {
-    transform: translateX(0);
-    filter: blur(0);
-  }
-  28% { transform: translateX(2%) scale(0.98); }
-  29% { transform: translateX(-3%); }
-  30% { transform: translateX(1%); }
-  31% { transform: translateX(0); }
-}
-
-
-

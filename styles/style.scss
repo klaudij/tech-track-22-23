@@ -24,14 +24,18 @@
 body {
   background: url("../images/p5.png");
   background-color: $c-grey--dark;
+  background-attachment: fixed;
 
   @include flex-box-centerd-column;
 
   font-family: 'Work Sans', sans-serif;
   text-align: center;
   color: $c-white;
+
   position: relative;
+
   transition: background 1s ease;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -43,8 +47,7 @@ main {
 h1 {
   font-family: 'game_of_thronesregular','Work Sans', sans-serif;
   font-weight: 800;
-  font-size: 2rem;
-  position: relative;
+  font-size: 4rem;
 }
 
 h2 {
@@ -61,40 +64,19 @@ p {
 
 
 
-
 /********************/
 /****** TITEL *******/
 /********************/
-.titel {
-  @include flex-box-centerd-row;
+.titel{
+  @include flex-box-centerd-column;
   position: relative;
-  margin: 10px 0 10px;
-  width: 200px;
-  opacity: 0;
-
-  animation-name: bounce, shake;
-  animation-duration: 1s, 4.2s,;
-  animation-iteration-count: 1, infinite;
-  animation-delay: 2.5s, 3s;
-  animation-timing-function: linear, linear;
-  animation-fill-mode: forwards, forwards;
-
-  p {
-    font-family: 'game_of_thronesregular','Work Sans', sans-serif;
-    margin: 40px 0 0 5px;
-  }
-
-  #crown {
-    fill: $c-white;
-    width: 30px;
-    position: absolute;
-    top: 20px;
-    animation: none;
-  }
 
   svg {
-    width:15px;
+    width:20px;
     height:auto;
+
+    animation: float 4.2s ease-in-out infinite;
+    animation-delay: 4.2s;
 
     .st0{fill:none;}
     .st1{fill:#A93000;}
@@ -107,22 +89,14 @@ p {
     .st8{fill:#D6D5D5;}
     .st9{fill:#949494;}
     .st10{fill:#C6C6C6;}
-
-    &:nth-of-type(2) {
-      animation: chop-right 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-      animation-delay: 3s;
-      transform: scaleX(-1);
-      margin-left: -10px;
-    }
-
-    &:nth-of-type(3) {
-      animation: chop-left 4.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-      animation-delay: 3s;
-      margin-left: 7px;
-      transform: scaleX(-1);
-    }
   }
+//  h1{
+//    margin: 10px 0 0 0;
+//  }
+
 }
+
+
 
 
 
@@ -132,55 +106,106 @@ p {
 
 /* F I R S T  S E C T I O N*/
 section:first-of-type {
-
-
-  h1 {
-    opacity: 0;
-    animation-name: show-up;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-delay: .3s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-  }
-
   .death-counter {
-    z-index: 1;
-    // position: fixed;
-    // top: 0;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 9999;
+    margin-top: 60px;
+    
+    opacity: 1;
   
     p {
-      font-size: 1.3em;
+      font-size: 1rem;
+
+      margin: 0 0 5px 0;
+
+      &#numbers {
+        font-weight: 700;
+        font-size: 2rem;
+        color: $c-white;
+        z-index: 9999; 
+
+        // background-color: #3738376f;
+        // backdrop-filter: blur(1.5px);
+        // text-align: center !important;
+        // text-shadow: 3px 5px 2px #262626;
+        
+        // border: 3px solid $c-black;
+        // border-radius: 5px;
+    
+        // width: 100px;
+      }
+    }
+
+    .pop {
+      background-color: #3738376f;
+      backdrop-filter: blur(1.5px);
+      text-align: center !important;
+      text-shadow: 3px 5px 2px #262626;
+      
+      border: 3px solid $c-black;
+      border-radius: 5px;
+  
+      max-width: 100px !important;
+      max-height:100px !important;
+      width: auto !important;
+      height: auto !important;
+      padding: 0 5px !important;
+      margin-top: 10px !important;
+      margin-left: -8px !important;
     }
   }
 
+
+
+
   .allDeaths {
-    margin-top: 60px;
+    margin-top: 90px;
     scale: 1;
   
   use:not(.oneDeathHover) {
     display: none;
   }
   }
+  .oneDeathHover {
   
-  .oneDeathHover:hover {
-    opacity: .7;
+    display:block;
+
+    &:hover{
+      opacity: .7;
+    }
   }
 }
 
 
 /* S E C O N D  S E C T I O N*/
 section:nth-of-type(2) {
+  margin-top: 60px;
+  opacity: 0;
 
-  h2{
-    margin-top: 10px;
+  h2 {
+    margin: 10px 0 50px 0;
   }
 
-  .node:hover {
-    stroke-width: 6px !important;
-    opacity: 1 !important;
-  }  
+  #my_dataviz {
+    background-color: #3738376f;
+    backdrop-filter: blur(1.5px);
+    border: 5px solid $c-black;
+    border-radius: 5px;
+
+    .node {
+      &:hover {
+        stroke-width: 6px !important;
+        opacity: 1 !important;
+        cursor: grab;
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+    }  
+  }
 }
 
 
@@ -189,18 +214,21 @@ section:nth-of-type(2) {
 /****** BACKGROUND LOGO *******/
 /******************************/
 .logo-background {
+  background: url("../images/targaryen-logo.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
   width: 25vw;
 	height: 25vw;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	position: fixed;
-	background: url("../images/targaryen-logo.png");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
+
 	z-index: -1;
 	opacity: 0.2;
+  transition: 0.5s;
 }
 
 
@@ -208,6 +236,11 @@ section:nth-of-type(2) {
 /****** TOOLTIP *******/
 /**********************/
 #tooltip1 {
+  background-color: white;
+  color: $c-black;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -215,33 +248,12 @@ section:nth-of-type(2) {
   justify-content: flex-end;
   align-content: stretch;
   align-items: flex-start;
-  
 
-  background-color: white;
-  color: $c-black;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: absolute;
   z-index: 1;
   text-align: left;
   padding: 10px 20px;
   opacity: 0;
-
-  // &:before{
-  //   content: "";
-
-  //   position: absolute;
-  //   bottom: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   bottom: -18px;
-  //   border-radius: 1px;
-  //   rotate: 45deg;
-  //   background-color: $c-white;
-  //   width: 20px;
-  //   height: 20px;
-  //   z-index: -99999;
-  // }
 
   p {
     font-family: 'Work Sans', sans-serif;
@@ -253,6 +265,7 @@ section:nth-of-type(2) {
   }
   h2 {
     font-family: 'Work Sans', sans-serif;
+
     margin-top: 0;
     margin-bottom: 10px;
   }
@@ -275,153 +288,5 @@ footer {
 
 
 
-.theDead {
-  margin: 50px 0 0 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  width: 100%;
-  // background-color: pink;
-  padding: 10px;
-  gap: 5px;
-
-  .personWhoDied {
-    width: 20px;
-    height: 20px;
-    background-color: $c-black;
-    border-radius: 50%;
-    transition: .3s;
-    position: relative;
-    z-index: 9999;
-
-    .toolTip {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-      gap:0 30px;
-
-      width: 490px;
-      height: 210px;
-      background-color: white;
-      color: $c-black;
-      border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      position: absolute;
-      top: -218px;
-      left: -234px;
-      z-index: 1;
-      text-align: left;
-      padding: 10px 20px;
-      visibility: hidden;
-      transform: .3s;
-
-      &:before{
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 234px;
-        rotate: 45deg;
-        background-color: white;
-        width: 20px;
-        height: 20px;
-        z-index: -99999;
-      }
-
-      h2 {
-        grid-area: 2 / 1 / 3 / 3;
-        font-size: 1.4rem;
-        margin-bottom: 10px;
-        // background-color: aquamarine;
-      }
-      p {
-        // font-weight: 800;
-        font-family: 'Work Sans', sans-serif;
-        font-size: 16px;
-        margin: 5px 0;
-
-        &:first-of-type{
-          grid-area: 1 / 1 / 2 / 2; 
-          font-weight: 800;
-          // margin-top: 15px
-          // background-color: rgb(161, 163, 221);
-        }
-        &:nth-of-type(2){
-
-          grid-area: 3 / 1 / 4 / 2;
-          // background-color: pink;
-        }
-        &:nth-of-type(3){
-
-          grid-area: 4 / 1 / 5 / 2;
-          // background-color: rgb(177, 66, 84);
-        }
-        &:nth-of-type(4){
-
-          grid-area: 5 / 1 / 6 / 3;
-          // background-color: rgb(38, 132, 41);
-        }
-        &:nth-of-type(5){
-
-          grid-area: 3 / 2 / 4 / 3;
-          // background-color: rgb(198, 171, 19);
-        }
-
-        &:nth-of-type(6){
-
-          grid-area: 4 / 2 / 5 / 3;
-          // background-color: rgb(215, 192, 255);
-        }
-      }
-    }
-
-    &:hover{
-      scale: 1.1;
-      cursor: pointer;
-      transition: .3s;
-
-      .toolTip{
-        scale: .9;
-        visibility: visible;
-        transition: .3s;
-      }
-    }
-  }
-}
 
 
-
-
-
-
-
-
-
-
-table {
-  margin-top: 100px;
-  background-color: $c-white;
-  border-radius: 10px;
-  border-collapse: collapse;
-  color: white;
-  /*   border:3px solid black; */
-
-  th {
-    background-color: $c-grey;
-    padding: 10px 100px 5px 10px;
-    text-align: left;
-  }
-
-  td {
-    padding: 10px 0 10px 10px;
-  }
-
-  tr {
-    background-color: $c-grey--dark;
-
-    &:last-child {
-      padding-bottom: 30px;
-    }
-  }
-}

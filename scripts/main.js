@@ -1,5 +1,6 @@
 // Our bundler automatically creates styling when imported in the main JS file!
 import '../styles/style.scss'
+import 'animate.css';
 
 
 
@@ -37,7 +38,6 @@ const allDeathsArray = data.map(i => {
 // console.log(deathsSeason1Array)
 
 
-
 // GET LAST DIGIT OF TOTAL DEATHS///
 let totalDeath = allDeathsArray.map(i => {
     return i.order
@@ -49,19 +49,49 @@ let lastDigit = totalDeath.slice(-1).pop();
 function showTotalDeaths(i){
   ///Without D3
   // let div = document.querySelector('.deaths')
-  // let newElement = document.createElement('h2');
+  // let newElement = document.createElement('p');
   // newElement.textContent = "total deaths throughout the show: " + i;
   // div.appendChild(newElement);
 
-  d3.select(".death-counter")///method selects one element from the document
-  .append("p") ///It appends an HTML node to a selected item, and returns a handle to that node.
-  .text("total deaths throughout the show: " + i);///method either sets the text of the selected node, or gets the current text.
+  d3.select(".death-counter")///method selects one element from the document///It appends an HTML node to a selected item, and returns a handle to that node.
+  .html("<p>total deaths throughout the show: </p> <p id='numbers'>0</p>");///method either sets the text of the selected node, or gets the current text.
+  
+  var startCount = 0,
+  num = {var:startCount};
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: "#numbers",
+      pinSpacing: false,
+      start: function() {
+        return document.querySelector('.allDeaths').offsetwidth;
+      },
+      end: function() {
+        return document.querySelector('#section1').offsetHeight;
+      },
+      scrub: 1, 
+      //markers:true,
+      toggleClass: {targets: '#numbers', className: "pop"},
+      pin: true
+      }
+  })
+  .to(num, {var: 6887, duration: 21, ease:"none", onUpdate:changeNumber})
+  .to({}, {duration:1})
+
+  function changeNumber() {
+  numbers.innerHTML = (num.var).toFixed();
+  }
 }
+
 showTotalDeaths(lastDigit);
 
 
 
-/// SEASON ONE DEATHS GENERATING IN DIVS///
+
+
+
+
+/// SEASON ONE DEATHS GENERATING IN SVG's///
 function generateIcons() {
     const numRows = 83;
     const numCols = 83;
@@ -271,7 +301,7 @@ function generateIcons() {
       .style("stroke-width", 1)
       .on("mouseover", (e, i) =>  
         d3.select("#tooltip1")
-        .html("<p>Death #" + i.order +"</p> <h2>" + i.character_killed + "</h2><p><strong>Allegiance: </strong>" + i.allegiance + "</p>" + "<p><strong>When: </strong>season" + i.season + ", episode " + i.episode + "</p> <p><strong>Killer: </strong>" + i.killer + "</p> <p><strong>Method: </strong>" + i.method + "</p>")
+        .html("<p>Death #" + i.order +"</p> <h2>" + i.character_killed + "</h2><p><strong>Allegiance: </strong>" + i.allegiance + "</p>" + "<p><strong>When: </strong>season " + i.season + ", episode " + i.episode + "</p> <p><strong>Killer: </strong>" + i.killer + "</p> <p><strong>Method: </strong>" + i.method + "</p>")
         .transition()
         .duration(175)
         .style("opacity", 1)
@@ -284,8 +314,74 @@ function generateIcons() {
       .on("mouseout", (e) =>  d3.select("#tooltip1").style("opacity", 0));
 
       // console.log(deathsSeason1Array[31])
+
+
+
+
+      gsap.from('.oneDeathHover', {
+            scrollTrigger : { // ScrollTrigger function
+              trigger: ".allDeaths", /// Here i want the scroll to be triggered on the SVG
+              start:"top 133px", // Positioning for when the scoll trigger should start
+              end: "bottom 400px",// Positioning for when the scoll trigger should end
+              //markers: true, /// only during development!
+              scrub: 1, /// Locks the animation to scroll. 
+              //toggleActions:"restart pause pause pause" /// 1. When entering the screen 2. Forward passed the end point 3. For when scrolling back after 2 4. when scrolling all the way back pass the start.
+          
+            }, /// Animation that plays for each icon when it appears on screen
+            y: -50,
+            display: 'none',
+            stagger: .25,
+            duration: .25
+      });
 }
 generateIcons();
+
+
+
+
+
+gsap.set("#section2", {opacity: 0, y: -50});
+
+ScrollTrigger.batch("#section2", {
+  onEnter: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.25,duration: 1}),
+  onLeave: batch => gsap.to(batch, {opacity: 0, y: -50}),
+  onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.25, duration: 1}),
+  onLeaveBack: batch => gsap.to(batch, {opacity: 0, y: -50}),
+
+  start: "top 9%",
+  end: "bottom 20%",
+  //markers: true,
+});
+
+
+
+
+// gsap.from('#section2', {
+//   scrollTrigger : { // ScrollTrigger function
+//     trigger: ".#section2", /// Here i want the scroll to be triggered on the SVG
+//     start:"top 20%", // Positioning for when the scoll trigger should start
+//     end: "bottom 20%",// Positioning for when the scoll trigger should end
+//     // pin: ".death-counter",  /// Tried pinning down the death-counter, but it doesn't work ;( 
+//     //markers: true, /// only during development!
+//     //scrub: 1, /// Locks the animation to scroll. 
+//     //toggleActions:"restart pause pause pause" /// 1. When entering the screen 2. Forward passed the end point 3. For when scrolling back after 2 4. when scrolling all the way back pass the start.
+
+//   }, /// Animation that plays for each icon when it appears on screen
+//   y: 24,
+//   opacity: 0,
+//   stagger: .15,
+//   duration: .25
+// });
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -309,25 +405,26 @@ const allKillers = d3.rollups(allDeathsArray, v => v.length, d => d.killer).map(
 
 
 // set the dimensions and margins of the graph
-var width = 550
-var height = 550
+var width = 900
+var height = 800
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
-    .attr("width", 550)
-    .attr("height", 550)
+    .attr("width", 900)
+    .attr("height", 800)
 
 
   // Size scale for countries
   var size = d3.scaleLinear()
     .domain([0, 1426])
-    .range([7,60])  // circle will be between 7 and 55 px wide
+    .range([10,66])  // circle will be between 7 and 55 px wide
 
 
     var color = d3.scaleOrdinal()
     .domain([0, 1426])
     .range(d3.schemeSet2);
+
 
 
   // Initialize the circle: all located at the center of the svg area
@@ -356,13 +453,11 @@ var svg = d3.select("#my_dataviz")
       .style("left", (e.pageX + 20) + "px")
       .style("top", (e.pageY + 1) + "px")
     )
-    .on("mouseout", (e) =>  d3.select("#tooltip1").style("opacity", 0));
-    // .call(d3.drag() // call specific function when circle is dragged
-    // .on("start", dragstarted)
-    // .on("drag", dragged)
-    // .on("end", dragended));
-
-
+    .on("mouseout", (e) =>  d3.select("#tooltip1").style("opacity", 0))
+    .call(d3.drag() // call specific function when circle is dragged
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended));
 
 
   // Features of the forces applied to the nodes:
@@ -370,7 +465,6 @@ var svg = d3.select("#my_dataviz")
       .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
       .force("charge", d3.forceManyBody().strength(1)) // Nodes are attracted one each other of value is > 0
       .force("collide", d3.forceCollide().strength(.1).radius(function(d){ return (size(d.totalKills)+6) }).iterations(5)) // Force that avoids circle overlapping
-
   // Apply these forces to the nodes and update their positions.
   // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
   simulation
@@ -381,22 +475,22 @@ var svg = d3.select("#my_dataviz")
             .attr("cy", function(d){ return d.y; })
       });
 
-
-//  // What happens when a circle is dragged?
-//  function dragstarted(d) {
-//   if (!d3.event.active) simulation.alphaTarget(.03).restart();
-//   d.fx = d.x;
-//   d.fy = d.y;
-// }
-// function dragged(d) {
-//   d.fx = d3.event.x;
-//   d.fy = d3.event.y;
-// }
-// function dragended(d) {
-//   if (!d3.event.active) simulation.alphaTarget(.03);
-//   d.fx = null;
-//   d.fy = null;
-// }
+      
+  // What happens when a circle is dragged?
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(.03).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  function dragged(event, d) {
+    d.fx = Math.max(0, Math.min(width, event.x));
+    d.fy = Math.max(0, Math.min(height, event.y));
+  }
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(.03);
+    d.fx = null;
+    d.fy = null;
+  }
 
 
 }
@@ -448,207 +542,3 @@ function changeBg()	{
 }
 
 setInterval(changeBg, 4200)
-
-
-
-
-
-
-
-
-function generateCircle() {
-  let area = document.querySelector('.theDead');
-
-  allDeathsArray.forEach(i => {
-  let oneDeath = document.createElement('div');
-  oneDeath.classList.add('personWhoDied');  
-
-  if (i.allegiance[0] === 'House Lannister'){ /// SEASON 1
-    oneDeath.style.backgroundColor =  "#D55656";
-  }
-  if (i.allegiance[0] === 'House Stark') {
-    oneDeath.style.backgroundColor =  "#8F8582";
-  }
-  if (i.allegiance[0] === 'Dothraki') {
-    oneDeath.style.backgroundColor =  "#9B6F46";
-  }
-  if (i.allegiance[0] === 'Night’s Watch') {
-    oneDeath.style.backgroundColor =  "#363636";
-  }
-  if (i.allegiance[0] === 'House Royce') {
-    oneDeath.style.backgroundColor =  "#D28C47";
-  }
-  if (i.allegiance[0] === 'None') {
-    oneDeath.style.backgroundColor =  "#99BAC7";
-  }
-  if (i.allegiance[0] === 'House Arryn') {
-    oneDeath.style.backgroundColor =  "#3183B4";
-  }
-  if (i.allegiance[0] === 'Free Folk') {
-    oneDeath.style.backgroundColor =  "#AEE6E6";
-  }
-  if (i.allegiance[0] === 'House Clegane') {
-    oneDeath.style.backgroundColor =  "#363636";
-  }
-  if (i.allegiance[0] === 'Smallfolk') {
-    oneDeath.style.backgroundColor =  "#999999";
-  }
-  if (i.allegiance[0] === 'House Egen') {
-    oneDeath.style.backgroundColor =  "white";
-  }
-  if (i.allegiance[0] === 'House Targaryen') {
-    oneDeath.style.backgroundColor =  "#9A0400";
-  }
-  if (i.allegiance[0] === 'House Baratheon of King’s Landing') {
-    oneDeath.style.backgroundColor =  "#FFD200";
-  }
-  if (i.allegiance[0] === 'House Baratheon of Storm’s End') { /// SEASON 2
-    oneDeath.style.backgroundColor =  "#FFD200";
-  }
-  if (i.allegiance[0] === 'House Baratheon of Dragonstone') { 
-    oneDeath.style.backgroundColor =  "#D55656";
-  }
-  if (i.allegiance[0] === 'House Cassel') { 
-    oneDeath.style.backgroundColor =  "#999999";
-  }
-  if (i.allegiance[0] === 'Faith of the Seven') { 
-    oneDeath.style.backgroundColor =  "#BB926F";
-  }
-  if (i.allegiance[0] === 'House Greyjoy') { 
-    oneDeath.style.backgroundColor =  "#FAF600";
-  }
-  if (i.allegiance[0] === 'House Karstark') { 
-    oneDeath.style.backgroundColor =  "#363636";
-  }
-  if (i.allegiance[0] === 'The Thirteen') { 
-    oneDeath.style.backgroundColor =  "#2C7AA8";
-  }
-  if (i.allegiance[0] === 'House Moore') { 
-    oneDeath.style.backgroundColor =  "#D28C47";
-  }
-  if (i.allegiance[0] === 'House Seaworth') { 
-    oneDeath.style.backgroundColor =  "pink";
-  }
-  if (i.allegiance[0] === 'Warlocks of Qarth') { 
-    oneDeath.style.backgroundColor =  "#A168A1";
-  }
-  if (i.allegiance[0] === 'House Tully') { /// SEASON 3
-    oneDeath.style.backgroundColor =  "#1F2B70";
-  }
-  if (i.allegiance[0] === 'House Mormont') { 
-    oneDeath.style.backgroundColor =  "pink";
-  }
-  if (i.allegiance[0] === 'Good Masters') { 
-    oneDeath.style.backgroundColor =  "#ADD486";
-  }
-  if (i.allegiance[0] === 'Brotherhood Without Banners') { 
-    oneDeath.style.backgroundColor =  "#FFFFFF";
-  }
-  if (i.allegiance[0] === 'The Lord of Light') { 
-    oneDeath.style.backgroundColor =  "#FFFFFF";
-  }
-  if (i.allegiance[0] === 'Varys') { 
-    oneDeath.style.backgroundColor =  "#F0F992";
-  }
-  if (i.allegiance[0] === 'House Baelish') { 
-    oneDeath.style.backgroundColor =  "#C4FA3E";
-  }
-  if (i.allegiance[0] === 'Second Sons') { 
-    oneDeath.style.backgroundColor =  "#D0D0D0";
-  }
-  if (i.allegiance[0] === 'Wise Masters') { 
-    oneDeath.style.backgroundColor =  "#AEE6E6";
-  }
-  if (i.allegiance[0] === 'House Bolton') { 
-    oneDeath.style.backgroundColor =  "#E4A2BC";
-  }
-  if (i.allegiance[0] === 'House Frey') { 
-    oneDeath.style.backgroundColor =  "#313A7B";
-  }
-  if (i.allegiance[0] === 'House Florent') { /// SEASON 4
-    oneDeath.style.backgroundColor =  "#E96325";
-  }
-  if (i.allegiance[0] === 'House Hollard') { 
-    oneDeath.style.backgroundColor =  "#4B82F9";
-  }
-  if (i.allegiance[0] === 'Great Masters') { 
-    oneDeath.style.backgroundColor =  "#FFD24C";
-  }
-  if (i.allegiance[0] === 'House Reed') { 
-    oneDeath.style.backgroundColor =  "#9AAD82";
-  }
-  if (i.allegiance[0] === 'Thenn') { 
-    oneDeath.style.backgroundColor =  "#7A7A7A";
-  }
-  if (i.allegiance[0] === 'House Kenning') { 
-    oneDeath.style.backgroundColor =  "#F89A2F";
-  }
-  if (i.allegiance[0] === 'House Martell') { 
-    oneDeath.style.backgroundColor =  "#E98238";
-  }
-  if (i.allegiance[0] === 'Sons of the Harpy') { /// SEASON 5
-    oneDeath.style.backgroundColor =  "#85BAC1";
-  }
-  if (i.allegiance[0] === 'Faceless Men') { 
-    oneDeath.style.backgroundColor =  "#3C3C3C";
-  }
-  if (i.allegiance[0] === 'Faith Militant') {  /// SEASON 6
-    oneDeath.style.backgroundColor =  "#691720";
-  }
-  if (i.allegiance[0] === 'House Hightower') { 
-    oneDeath.style.backgroundColor =  "#4B5956";
-  }
-  if (i.allegiance[0] === 'House Dayne') { 
-    oneDeath.style.backgroundColor =  "#63023A";
-  }
-  if (i.allegiance[0] === 'Children of the Forest') { 
-    oneDeath.style.backgroundColor =  "#A4D8A6";
-  }
-  if (i.allegiance[0] === 'House Umber') { 
-    oneDeath.style.backgroundColor =  "#A01D20";
-  }
-  if (i.allegiance[0] === 'Unknown') { 
-    oneDeath.style.backgroundColor =  "#947688";
-  }
-  if (i.allegiance[0] === 'House Tyrell') { 
-    oneDeath.style.backgroundColor =  "#8B9B7B";
-  }
-  if (i.allegiance[0] === 'Triarchs of Volantis') { 
-    oneDeath.style.backgroundColor =  "#D0D0D0";
-  }
-  if (i.allegiance[0] === 'House Greyjoy (Yara-aligned)') { /// SEASON 7
-    oneDeath.style.backgroundColor =  "#FFD602";
-  }
-  if (i.allegiance[0] === 'House Greyjoy (Euron-aligned)') { 
-    oneDeath.style.backgroundColor =  "#D4B114";
-  }
-  if (i.allegiance[0] === 'House Tarly') { 
-    oneDeath.style.backgroundColor =  "#5F681F";
-  }
-  if (i.allegiance[0] === 'Golden Company') {  /// SEASON 8
-    oneDeath.style.backgroundColor =  "#CDA80E";
-  }
-  if (i.allegiance[0] === 'Kingsguard') { 
-    oneDeath.style.backgroundColor =  "#E0DED0";
-  }
-
-  let moreInfoHtml = ` 
-  <div class="toolTip">
-    <p>Death #${i.order}</p>
-    <h2>${i.character_killed}</h2>
-    <p><strong>Allegiance: </strong>${i.allegiance}</p>
-    <p><strong>Where: </strong>${i.location}</p>
-    <p><strong>When: </strong>season ${i.season}, episode ${i.episode}</p>
-    <p><strong>Killer: </strong>${i.killer}</p>
-    <p><strong>Method: </strong>${i.method}</p>
-  </div>`;
-
-
-  oneDeath.insertAdjacentHTML('beforeend', moreInfoHtml);
-  area.appendChild(oneDeath);
-})
-}
-
-// generateCircle()
-
-
