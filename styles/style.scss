@@ -34,7 +34,7 @@ body {
 
   position: relative;
 
-  transition: background 1s ease;
+  transition: background-image .5s ease-in-out;
   scroll-behavior: smooth;
 }
 
@@ -45,13 +45,13 @@ main {
 
 
 h1 {
-  font-family: 'game_of_thronesregular','Work Sans', sans-serif;
+  font-family: 'game_of_thronesregular', 'Work Sans', sans-serif;
   font-weight: 800;
   font-size: 4rem;
 }
 
 h2 {
-  font-family: 'game_of_thronesregular','Work Sans', sans-serif;
+  font-family: 'game_of_thronesregular', 'Work Sans', sans-serif;
   font-weight: 500;
 }
 
@@ -67,32 +67,65 @@ p {
 /********************/
 /****** TITEL *******/
 /********************/
-.titel{
+.titel {
   @include flex-box-centerd-column;
   position: relative;
 
   svg {
-    width:20px;
-    height:auto;
+    width: 20px;
+    height: auto;
 
     animation: float 4.2s ease-in-out infinite;
     animation-delay: 4.2s;
 
-    .st0{fill:none;}
-    .st1{fill:#A93000;}
-    .st2{fill:#AF3E20;}
-    .st3{fill:#822500;}
-    .st4{fill:#8E3A24;}
-    .st5{fill:#FFD802;}
-    .st6{fill:#DFBD00;}
-    .st7{fill:#F8F8F8;}
-    .st8{fill:#D6D5D5;}
-    .st9{fill:#949494;}
-    .st10{fill:#C6C6C6;}
+    .st0 {
+      fill: none;
+    }
+
+    .st1 {
+      fill: #A93000;
+    }
+
+    .st2 {
+      fill: #AF3E20;
+    }
+
+    .st3 {
+      fill: #822500;
+    }
+
+    .st4 {
+      fill: #8E3A24;
+    }
+
+    .st5 {
+      fill: #FFD802;
+    }
+
+    .st6 {
+      fill: #DFBD00;
+    }
+
+    .st7 {
+      fill: #F8F8F8;
+    }
+
+    .st8 {
+      fill: #D6D5D5;
+    }
+
+    .st9 {
+      fill: #949494;
+    }
+
+    .st10 {
+      fill: #C6C6C6;
+    }
   }
-//  h1{
-//    margin: 10px 0 0 0;
-//  }
+
+  //  h1{
+  //    margin: 10px 0 0 0;
+  //  }
 
 }
 
@@ -112,28 +145,33 @@ section:first-of-type {
     align-items: center;
     z-index: 9999;
     margin-top: 60px;
-    
+
     opacity: 1;
-  
+
+    h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1rem;
+      margin: 0 0 5px 0;
+    }
     p {
       font-size: 1rem;
 
-      margin: 0 0 5px 0;
+     
 
       &#numbers {
         font-weight: 700;
         font-size: 2rem;
         color: $c-white;
-        z-index: 9999; 
+        z-index: 9999;
 
         // background-color: #3738376f;
         // backdrop-filter: blur(1.5px);
         // text-align: center !important;
         // text-shadow: 3px 5px 2px #262626;
-        
+
         // border: 3px solid $c-black;
         // border-radius: 5px;
-    
+
         // width: 100px;
       }
     }
@@ -143,12 +181,12 @@ section:first-of-type {
       backdrop-filter: blur(1.5px);
       text-align: center !important;
       text-shadow: 3px 5px 2px #262626;
-      
+
       border: 3px solid $c-black;
       border-radius: 5px;
-  
+
       max-width: 100px !important;
-      max-height:100px !important;
+      max-height: 100px !important;
       width: auto !important;
       height: auto !important;
       padding: 0 5px !important;
@@ -163,16 +201,17 @@ section:first-of-type {
   .allDeaths {
     margin-top: 90px;
     scale: 1;
-  
-  use:not(.oneDeathHover) {
-    display: none;
-  }
-  }
-  .oneDeathHover {
-  
-    display:block;
 
-    &:hover{
+    use:not(.oneDeathHover) {
+      display: none;
+    }
+  }
+
+  .oneDeathHover {
+
+    display: block;
+
+    &:hover {
       opacity: .7;
     }
   }
@@ -204,7 +243,7 @@ section:nth-of-type(2) {
       &:active {
         cursor: grabbing;
       }
-    }  
+    }
   }
 }
 
@@ -215,19 +254,21 @@ section:nth-of-type(2) {
 /******************************/
 .logo-background {
   background: url("../images/targaryen-logo.png");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
   width: 25vw;
-	height: 25vw;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	position: fixed;
+  height: 25vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
 
-	z-index: -1;
-	opacity: 0.2;
+  z-index: -1;
+  opacity: 0.2;
+  animation: changeBg 4.2s ease-in-out infinite;
+  animation-delay: 4.2s;
   transition: 0.5s;
 }
 
@@ -260,9 +301,10 @@ section:nth-of-type(2) {
     font-size: 16px;
 
     &:first-of-type {
-      margin:0 0 10px 0;
+      margin: 0 0 10px 0;
     }
   }
+
   h2 {
     font-family: 'Work Sans', sans-serif;
 
@@ -280,13 +322,3 @@ footer {
   font-size: 13px;
   margin: 200px 0 20px 0;
 }
-
-
-
-
-
-
-
-
-
-

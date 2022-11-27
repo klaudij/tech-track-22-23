@@ -11,7 +11,6 @@ import request from './request.js';
 import generateTable from './make.js';
 
 
-
 async function start() {
   const data = await request(CONFIG.url);
 
@@ -55,7 +54,7 @@ async function start() {
     // div.appendChild(newElement);
 
     d3.select(".death-counter")///method selects one element from the document///It appends an HTML node to a selected item, and returns a handle to that node.
-    .html("<p>total deaths throughout the show: </p> <p id='numbers'>0</p>");///method either sets the text of the selected node, or gets the current text.
+    .html("<h2>total deaths throughout the show: </h2> <p id='numbers'>0</p>");///method either sets the text of the selected node, or gets the current text.
     
     var startCount = 0,
     num = {var:startCount};
@@ -527,6 +526,8 @@ async function start() {
 
   function changeBg()	{
     const div = document.querySelector(".logo-background");
+
+
     const images = ["url('../images/arryn-logo.png')", 
     "url('../images/baratheon-logo.png')", 
     "url('../images/greyjoy-logo.png')", 
@@ -542,8 +543,7 @@ async function start() {
     div.style.backgroundImage = bg;
   }
 
-  setInterval(changeBg, 4200)
-
+  // setInterval(changeBg, 4200)
 }
 
 start();

@@ -9,3 +9,18 @@
 		transform: translatey(0px);
 	}
 }
+
+
+
+
+@keyframes changeBg{
+	0%  {background-image: url("/images/arryn-logo.png");}
+	15% {background-image: url("/images/baratheon-logo.png");}
+	30% {background-image: url("/images/greyjoy-logo.png");}
+	45% {background-image: url("/images/lannister-logo.png")}
+	60% {background-image: url("/images/martell-logo.png")}
+	75% {background-image: url("/images/stark-logo.png")}
+	90% {background-image: url("/images/targaryen-logo.png")}
+	90% {background-image: url("/images/tully-logo.png")}
+	100% {background-image: url("/images/tyrell-logo.png")}
+ }
