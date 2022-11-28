@@ -11,16 +11,27 @@
 }
 
 
+@keyframes changeBgColor{
+	0%, 11%  {background-color: $c-targaryen;}
+	22% {background-color: $c-baratheon;}
+	33% {background-color: $c-greyjoy;}
+	44% {background-color: $c-lannister}
+	55% {background-color: $c-martell}
+	66% {background-color: $c-stark}
+	77% {background-color: $c-tyrell}
+	88% {background-color: $c-tully}
+	100% {background-color: $c-arryn}
+ }
 
-
-@keyframes changeBg{
-	0%  {background-image: url("/images/arryn-logo.png");}
-	15% {background-image: url("/images/baratheon-logo.png");}
-	30% {background-image: url("/images/greyjoy-logo.png");}
-	45% {background-image: url("/images/lannister-logo.png")}
-	60% {background-image: url("/images/martell-logo.png")}
-	75% {background-image: url("/images/stark-logo.png")}
-	90% {background-image: url("/images/targaryen-logo.png")}
-	90% {background-image: url("/images/tully-logo.png")}
-	100% {background-image: url("/images/tyrell-logo.png")}
+ 
+@keyframes changeBgImage{
+	0%, 11%  {background-image: url("/images/targaryen-logo.png");}
+	22% {background-image: url("/images/baratheon-logo.png");}
+	33% {background-image: url("/images/greyjoy-logo.png");}
+	44% {background-image: url("/images/lannister-logo.png")}
+	55% {background-image: url("/images/martell-logo.png")}
+	66% {background-image: url("/images/stark-logo.png")}
+	77% {background-image: url("/images/tyrell-logo.png")}
+	88% {background-image: url("/images/tully-logo.png")}
+	100% {background-image: url("/images/arryn-logo.png")} 
  }
