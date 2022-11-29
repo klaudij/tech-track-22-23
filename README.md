@@ -1,19 +1,21 @@
 # The Fallen 🗡️🐉
 tech-track-22-23
 
-**Author:** Klaudija Miskovic
 
-[ See Wiki for more details ->](https://github.com/klaudij/tech-track-22-23/wiki)
 
 
 ## Contents
-- Introduction
 - Getting started
 - Run application in local
+- Documentation
+- Authors
 
-## Introduction
 
 ## Getting started
+###Installation
+[ Vite ](https://vitejs.dev/)
+[ NPM ](https://docs.npmjs.com/)
+[ GIT ](https://desktop.github.com/)
 To run my application on your own device first download the zip-file from my github ⬆️⬆️⬆️
 
 ## Run application in local
@@ -25,5 +27,9 @@ To get the application running, type the following in your console:
 This will give you a local link......
 
 
+## Documentation
+[ My process and journey can be found in wiki ](https://github.com/klaudij/tech-track-22-23/wiki)
 
 
+## Authors
+**Author:** Klaudija Miskovic
