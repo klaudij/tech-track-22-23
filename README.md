@@ -1,34 +1,55 @@
 # The Fallen 🗡️🐉
-tech-track-22-23
-
-
-
+tech-track-22-23 final assessment 
 
 ## Contents
+- Introduction
+- Demo
 - Getting started
-- Run application in local
 - Documentation
-- Authors
+- Author
 
+## Demo
 
 ## Getting started
-###Installation
-[ Vite ](https://vitejs.dev/)
-[ NPM ](https://docs.npmjs.com/)
-[ GIT ](https://desktop.github.com/)
-To run my application on your own device first download the zip-file from my github ⬆️⬆️⬆️
+### Installation
 
-## Run application in local
-Once you've got all the libraries download. now it's time to start up the appliaction !
+You need the following installed:
+- [ Vite ](https://vitejs.dev/)
+- [ NPM ](https://docs.npmjs.com/)
+- [ GIT ](https://git-scm.com/downloads) or if you prefer [ Github Desktop ](https://desktop.github.com/) you can also you use that instead of GIT.
 
-To get the application running, type the following in your console:
-`npm run dev`
+### Clone repository
+```
+gh repo clone klaudij/tech-track-22-23
+```
 
-This will give you a local link......
+
+### Install dependencies
+To install all the dependencies, type(copy) the following in your console:
+
+```
+npm install
+```
+
+My application makes use of the following dependencies/libraries:
+- [ SASS ](https://sass-lang.com/install)
+- [ D3 ](https://www.npmjs.com/package/d3)
+- [ GSAP ](https://greensock.com/docs/v3/Installation)
+- [ animate.css ](https://animate.style/)
+
+
+### Start the server in local
+To get the application running, type(copy) the following in your console:
+
+```
+npm run dev
+```
+
+
 
 
 ## Documentation
-[ My process and journey can be found in wiki ](https://github.com/klaudij/tech-track-22-23/wiki)
+[ My process and journey can be found in Wiki ](https://github.com/klaudij/tech-track-22-23/wiki)
 
 
 ## Authors
