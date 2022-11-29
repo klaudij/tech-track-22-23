@@ -55,6 +55,10 @@ To get the application running, type(copy) the following in your terminal:
 npm run dev
 ```
 
+copy paste the local url and you're running on local!
+```
+example ---> Local:   http://localhost:5174/
+```
 
 ## Documentation ✍🏻
 [ My process and journey can be found in Wiki ](https://github.com/klaudij/tech-track-22-23/wiki)
