@@ -1,8 +1,9 @@
 // Our bundler automatically creates styling when imported in the main JS file!
 import '../styles/style.scss'
 import 'animate.css';
-
-
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 // We can use node_modules directely in the browser!
 import * as d3 from 'd3';
@@ -131,7 +132,7 @@ async function start() {
                 trigger: ".allDeaths", /// Here i want the scroll to be triggered on the SVG
                 start:"top 128px", // Positioning for when the scoll trigger should start
                 end: "bottom 400px",// Positioning for when the scoll trigger should end
-                markers: true, /// only during development!
+                //markers: true, /// only during development!
                 scrub: 1, ///Locks the animation to scroll. 
             
               }, /// Animation that plays for each icon when it appears on screen

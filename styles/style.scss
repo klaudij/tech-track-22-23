@@ -4,7 +4,7 @@
 @import 'config/colors';
 @import 'config/animations';
 @import 'config/font';
-@import 'mixins/basic-layout';
+@import 'mixins/standard';
 
 
 
@@ -162,13 +162,10 @@ section:first-of-type {
     }
 
     .counting {
-      background-color: $c-grey;
-      backdrop-filter: blur(1.5px);
+      @include blurBg;
+
       text-align: center !important;
       text-shadow: 3px 5px 2px #262626;
-
-      border: 3px solid $c-black;
-      border-radius: 5px;
 
       max-width: 100px !important;
       max-height: 100px !important;
@@ -176,7 +173,7 @@ section:first-of-type {
       height: auto !important;
       padding: 0 5px !important;
       margin-top: 10px !important;
-      margin-left: -8px !important;
+      margin-left: -3px !important;
     }
   }
 
@@ -213,10 +210,7 @@ section:nth-of-type(2) {
   }
 
   #my_dataviz {
-    background-color: $c-grey;
-    backdrop-filter: blur(1.5px);
-    border: 5px solid $c-black;
-    border-radius: 5px;
+    @include blurBg;
 
     .node {
       &:hover {
@@ -306,4 +300,5 @@ section:nth-of-type(2) {
 footer {
   font-size: 13px;
   margin: 200px 0 20px 0;
+  opacity: .6;
 }
