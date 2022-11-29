@@ -55,7 +55,7 @@ To get the application running, type(copy) the following in your terminal:
 npm run dev
 ```
 
-copy paste the local url and you're running on local!
+copy paste the local url in your browser and you're running on local!
 ```
 example ---> Local:   http://localhost:5174/
 ```
