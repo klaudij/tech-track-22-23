@@ -35,7 +35,7 @@ gh repo clone klaudij/tech-track-22-23
 
 
 ### Install dependencies
-To install all the dependencies, type(copy) the following in your console:
+To install all the dependencies, type(copy) the following in your terminal:
 
 ```
 npm install
@@ -49,7 +49,7 @@ My application makes use of the following dependencies/libraries:
 
 
 ### Start the server in local
-To get the application running, type(copy) the following in your console:
+To get the application running, type(copy) the following in your terminal:
 
 ```
 npm run dev
