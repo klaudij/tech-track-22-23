@@ -1,16 +1,26 @@
 # The Fallen 🗡️🐉
 tech-track-22-23 final assessment 
 
-## Contents
+## Contents 🔖
 - Introduction
 - Demo
 - Getting started
 - Documentation
 - Author
 
-## Demo
 
-## Getting started
+## Introduction 👋🏻
+This repository will be my journey for this years tech-track course. 
+
+The goal of this course is to create a data visualisation (using D3 and if you feel brave you can use more libraries/fameworkes), based on your chosen data where you focus on Architecture, Visualization and/or Storytelling.
+
+More information about the tech-track course can be found [ here ](https://github.com/cmda-tt/course-22-23)
+
+
+
+## Demo 👾
+
+## Getting started 👩🏻‍💻
 ### Installation
 
 You need the following installed:
@@ -46,11 +56,9 @@ npm run dev
 ```
 
 
-
-
-## Documentation
+## Documentation ✍🏻
 [ My process and journey can be found in Wiki ](https://github.com/klaudij/tech-track-22-23/wiki)
 
 
-## Authors
+## Authors 🙋🏻‍♀️
 **Author:** Klaudija Miskovic
