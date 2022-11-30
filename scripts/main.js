@@ -1,12 +1,14 @@
-// Our bundler automatically creates styling when imported in the main JS file!
+// Import styling
 import '../styles/style.scss'
 import 'animate.css';
+
+
+// Import modules
+import * as d3 from 'd3';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-// We can use node_modules directely in the browser!
-import * as d3 from 'd3';
 import CONFIG from './config.js';
 import request from './request.js';
 import { killerFill, iconFill } from './colorFills.js';
@@ -14,9 +16,6 @@ import { killerFill, iconFill } from './colorFills.js';
 
 async function start() {
   const data = await request(CONFIG.url);
-
-  // console.log(data);
-
 
   const allDeathsArray = data.map(i => {
     return {
@@ -42,17 +41,17 @@ async function start() {
 
     gsap.timeline({
       scrollTrigger: {
-        trigger: "#numbers",
+        trigger: ".death-counter",
         pinSpacing: false,
         start: function() {
-          return document.querySelector('.allDeaths').offsetwidth;
+          return document.querySelector(".allDeaths").offsetwidth;
         },
         end: function() {
-          return document.querySelector('#section1').offsetHeight;
+          return document.querySelector("#section1").offsetHeight;
         },
         scrub: 1, 
         //markers:true,
-        toggleClass: {targets: '#numbers', className: "counting"},
+        toggleClass: {targets: ".death-counter", className: "count"},
         pin: true
         }
     })
@@ -130,7 +129,7 @@ async function start() {
         gsap.from('.oneDeathHover', {
               scrollTrigger : { // ScrollTrigger function
                 trigger: ".allDeaths", /// Here i want the scroll to be triggered on the SVG
-                start:"top 128px", // Positioning for when the scoll trigger should start
+                start:"top 160px", // Positioning for when the scoll trigger should start
                 end: "bottom 400px",// Positioning for when the scoll trigger should end
                 //markers: true, /// only during development!
                 scrub: 1, ///Locks the animation to scroll. 

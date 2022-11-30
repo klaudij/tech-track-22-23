@@ -49,7 +49,7 @@ main {
 h1 {
   font-family: 'game_of_thronesregular', 'Work Sans', sans-serif;
   font-weight: 800;
-  font-size: 4rem;
+
 }
 
 h2 {
@@ -63,70 +63,10 @@ p {
 }
 
 
-
-/********************/
-/****** TITEL *******/
-/********************/
 .titel {
-  @include flex-box-centerd-column;
   position: relative;
-
-  svg {
-    width: 20px;
-    height: auto;
-
-    animation: float 4.2s ease-in-out infinite;
-    animation-delay: 4.2s;
-
-    .st0 {
-      fill: none;
-    }
-
-    .st1 {
-      fill: #A93000;
-    }
-
-    .st2 {
-      fill: #AF3E20;
-    }
-
-    .st3 {
-      fill: #822500;
-    }
-
-    .st4 {
-      fill: #8E3A24;
-    }
-
-    .st5 {
-      fill: #FFD802;
-    }
-
-    .st6 {
-      fill: #DFBD00;
-    }
-
-    .st7 {
-      fill: #F8F8F8;
-    }
-
-    .st8 {
-      fill: #D6D5D5;
-    }
-
-    .st9 {
-      fill: #949494;
-    }
-
-    .st10 {
-      fill: #C6C6C6;
-    }
-  }
+  font-size: 4rem;
 }
-
-
-
-
 
 /**********************/
 /****** SECTIONS*******/
@@ -134,14 +74,20 @@ p {
 
 /* F I R S T  S E C T I O N*/
 section:first-of-type {
+  position: relative;
+
+  @include flex-box-centerd-column;
+
   .death-counter {
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 9999;
     margin-top: 60px;
-
+    position: relative;
     opacity: 1;
+    width: 300px;
+    padding: 4px 0;
 
     h2 {
       font-family: 'Work Sans', sans-serif;
@@ -151,8 +97,6 @@ section:first-of-type {
     p {
       font-size: 1rem;
 
-     
-
       &#numbers {
         font-weight: 700;
         font-size: 2rem;
@@ -160,24 +104,12 @@ section:first-of-type {
         z-index: 9999;
       }
     }
-
-    .counting {
-      @include blurBg;
-
-      text-align: center !important;
-      text-shadow: 3px 5px 2px #262626;
-
-      max-width: 100px !important;
-      max-height: 100px !important;
-      width: auto !important;
-      height: auto !important;
-      padding: 0 5px !important;
-      margin-top: 10px !important;
-      margin-left: -3px !important;
-    }
   }
 
-
+  .count {
+    @include blurBg;
+    margin-top: 10px !important;
+  }
 
 
   .allDeaths {
@@ -292,6 +224,24 @@ section:nth-of-type(2) {
   }
 
 }
+
+/*********************************/
+/****** SCROLL DOWN - HINT *******/
+/*********************************/
+.lottie{
+  position: fixed;
+  bottom: 10%;
+  opacity: 0;
+  animation: appear 4.5s ease-in-out forwards;
+  animation-delay: 6s;
+  transition: .5s;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 /*********************/
