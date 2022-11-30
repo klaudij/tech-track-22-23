@@ -49,6 +49,7 @@ My application makes use of the following dependencies/libraries:
 - [ D3 ](https://www.npmjs.com/package/d3)
 - [ GSAP ](https://greensock.com/docs/v3/Installation)
 - [ animate.css ](https://animate.style/)
+- [ LottieFiles ](https://lottiefiles.com/)
 
 
 ### Start the server in local
