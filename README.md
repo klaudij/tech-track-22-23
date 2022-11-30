@@ -19,8 +19,7 @@ More information about the tech-track course can be found [ here ](https://githu
 
 
 ## Demo 👾
-![Screen-Recording-2022-11-29-at-3 45 47-PM](https://user-images.githubusercontent.com/89772847/204560743-414b1c1e-a495-449b-9822-39d8d9aa37e7.gif)
-
+![Screen-Recording-2022-11-30-at-3 01 13-PM (1)](https://user-images.githubusercontent.com/89772847/204816717-bf0310f6-46d7-4c25-b66a-0127a4a85b40.gif)
 
 
 ## Getting started 👩🏻‍💻
