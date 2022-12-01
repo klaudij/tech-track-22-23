@@ -1,12 +1,10 @@
 /***************/
 /****IMPORTS****/
 /***************/
-@import 'config/colors';
-@import 'config/animations';
-@import 'config/font';
-@import 'mixins/standard';
-
-
+@import "config/colors";
+@import "config/animations";
+@import "config/font";
+@import "mixins/standard";
 
 /**************/
 /**CSS REMEDY**/
@@ -14,7 +12,6 @@
 * {
   @include remedy-layout;
 }
-
 
 /**********************/
 /****** STYLING *******/
@@ -28,7 +25,7 @@ body {
 
   @include flex-box-centerd-column;
 
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   text-align: center;
   color: $c-white;
 
@@ -36,7 +33,7 @@ body {
 
   animation: changeBgColor 60s ease-in-out infinite;
   animation-delay: 4.2s;
-  transition: .5s;
+  transition: 0.5s;
   scroll-behavior: smooth;
 }
 
@@ -45,26 +42,21 @@ main {
   @include flex-box-centerd-column;
 }
 
-
 h1 {
-  font-family: 'game_of_thronesregular', 'Work Sans', sans-serif;
+  font-family: "game_of_thronesregular", "Work Sans", sans-serif;
   font-weight: 800;
-
 }
 
 h2 {
-  font-family: 'game_of_thronesregular', 'Work Sans', sans-serif;
+  font-family: "game_of_thronesregular", "Work Sans", sans-serif;
   font-weight: 500;
 }
-
 
 p {
   font-size: 13px;
 }
 
-
 .titel {
-  position: relative;
   font-size: 4rem;
 }
 
@@ -90,8 +82,9 @@ section:first-of-type {
     padding: 4px 0;
 
     h2 {
-      font-family: 'Work Sans', sans-serif;
+      font-family: "Work Sans", sans-serif;
       font-size: 1rem;
+
       margin: 0 0 5px 0;
     }
     p {
@@ -101,6 +94,7 @@ section:first-of-type {
         font-weight: 700;
         font-size: 2rem;
         color: $c-white;
+
         z-index: 9999;
       }
     }
@@ -110,7 +104,6 @@ section:first-of-type {
     @include blurBg;
     margin-top: 10px !important;
   }
-
 
   .allDeaths {
     margin-top: 90px;
@@ -122,15 +115,13 @@ section:first-of-type {
   }
 
   .oneDeathHover {
-
     display: block;
 
     &:hover {
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 }
-
 
 /* S E C O N D  S E C T I O N*/
 section:nth-of-type(2) {
@@ -158,8 +149,6 @@ section:nth-of-type(2) {
   }
 }
 
-
-
 /******************************/
 /****** BACKGROUND LOGO *******/
 /******************************/
@@ -180,15 +169,15 @@ section:nth-of-type(2) {
 
   animation: changeBgImage 60s ease-in-out infinite;
   animation-delay: 4.2s;
-  transition: background-image .5s ease-in-out;
+  transition: background-image 0.5s ease-in-out;
 }
-
 
 /**********************/
 /****** TOOLTIP *******/
 /**********************/
 #tooltip1 {
   background-color: white;
+  text-align: left;
   color: $c-black;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -200,15 +189,13 @@ section:nth-of-type(2) {
   justify-content: flex-end;
   align-content: stretch;
   align-items: flex-start;
-
-  position: absolute;
-  z-index: 1;
-  text-align: left;
   padding: 10px 20px;
+
+  z-index: 1;
   opacity: 0;
 
   p {
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-size: 16px;
 
     &:first-of-type {
@@ -217,38 +204,36 @@ section:nth-of-type(2) {
   }
 
   h2 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
 
     margin-top: 0;
     margin-bottom: 10px;
   }
-
 }
 
 /*********************************/
 /****** SCROLL DOWN - HINT *******/
 /*********************************/
-.lottie{
-  position: fixed;
-  bottom: 10%;
-  opacity: 0;
+.lottie {
   animation: appear 4.5s ease-in-out forwards;
   animation-delay: 6s;
-  transition: .5s;
+  transition: 0.5s;
+  opacity: 0;
 
+  position: fixed;
+  bottom: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-
-
 /*********************/
 /****** FOOTER *******/
 /*********************/
 footer {
   font-size: 13px;
+  
   margin: 200px 0 20px 0;
-  opacity: .6;
+  opacity: 0.6;
 }

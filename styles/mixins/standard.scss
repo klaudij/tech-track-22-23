@@ -1,28 +1,28 @@
 @mixin remedy-layout {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  list-style: none;
 }
 
 @mixin flex-box-centerd-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin flex-box-centerd-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin blurBg {
-    background-color: $c-grey;
-    backdrop-filter: blur(1.5px);
-    border: 3px solid $c-black;
-    border-radius: 5px;
+  background-color: $c-grey;
+  backdrop-filter: blur(1.5px);
+  border: 3px solid $c-black;
+  border-radius: 5px;
 }

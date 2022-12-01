@@ -14,6 +14,7 @@ import request from './request.js';
 import { killerFill, iconFill } from './colorFills.js';
 
 
+
 async function start() {
   const data = await request(CONFIG.url);
 
@@ -36,7 +37,7 @@ async function start() {
     d3.select(".death-counter")///method selects one element from the document///It appends an HTML node to a selected item, and returns a handle to that node.
     .html("<h2>total deaths throughout the show: </h2> <p id='numbers'>0</p>");///method either sets the text of the selected node, or gets the current text.
     
-    var startCount = 0,
+    const startCount = 0,
     num = {var:startCount};
 
     gsap.timeline({
@@ -44,7 +45,7 @@ async function start() {
         trigger: ".death-counter",
         pinSpacing: false,
         start: function() {
-          return document.querySelector(".allDeaths").offsetwidth;
+          return document.querySelector(".allDeaths").offsetWidth;
         },
         end: function() {
           return document.querySelector("#section1").offsetHeight;
@@ -55,14 +56,12 @@ async function start() {
         pin: true
         }
     })
-    .to(num, {var: 6887, duration: 21, ease:"none", onUpdate:changeNumber})
+    .to(num, {var: 6887, 
+              duration: 21, 
+              ease:"none", 
+              onUpdate:(e) => numbers.innerHTML = (num.var).toFixed()})
     .to({}, {duration:1})
-
-    function changeNumber() {
-    numbers.innerHTML = (num.var).toFixed();
-    }
   }
-
   showTotalDeaths();
 
 
@@ -86,9 +85,7 @@ async function start() {
 
       const gridData = d3.range(numCols*numRows)
 
-      // console.log(gridData);
 
-  // console.log("gridData:", gridData)
 
       const svg = d3.select(".allDeaths")
                       .attr("width", width)
@@ -121,10 +118,6 @@ async function start() {
         )
         .on("mouseout", (e) =>  d3.select("#tooltip1").style("opacity", 0));
 
-        // console.log(deathsSeason1Array[31])
-
-
-
 
         gsap.from('.oneDeathHover', {
               scrollTrigger : { // ScrollTrigger function
@@ -144,19 +137,22 @@ async function start() {
   generateIcons();
 
 
+
+  gsap.from('#section2', {
+    scrollTrigger : { // ScrollTrigger function
+      trigger: ".allDeaths",
+      start: function() {
+        return document.querySelector(".allDeaths").offsetHeight;
+      },
+      end: "bottom 20%",// Positioning for when the scoll trigger should end
+      toggleActions: "play reverse play reverse",
   
-  gsap.set("#section2", {opacity: 0, y: -50});
-
-  ScrollTrigger.batch("#section2", {
-    onEnter: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.25,duration: 1}),
-    onLeave: batch => gsap.to(batch, {opacity: 0, y: -50}),
-    onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.25, duration: 1}),
-    onLeaveBack: batch => gsap.to(batch, {opacity: 0, y: -50}),
-
-    start: "top 9%",
-    end: "bottom 20%",
-    //markers: true,
-  });
+    }, /// Animation that plays for each icon when it appears on screen
+    y: -50,
+    opacity: 1,
+    stagger: .25,
+    duration: .25
+});
 
 
 
@@ -175,24 +171,24 @@ async function start() {
 
 
   // set the dimensions and margins of the graph
-  var width = 960
-  var height = 650
+  const width = 960
+  const height = 650
 
   // append the svg object to the body of the page
-  var svg = d3.select("#my_dataviz")
+  const svg = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", 960)
       .attr("height", 650)
 
 
     // Size scale for circles
-    var size = d3.scaleLinear()
+    const size = d3.scaleLinear()
       .domain([0, 1426])
       .range([10,66])  // circle will be between 7 and 55 px wide
 
 
     // Initialize the circle: all located at the center of the svg area
-    var node = svg.append("g")
+    const node = svg.append("g")
       .selectAll("circle")
       .data(allKillers)
       .enter()
@@ -225,7 +221,7 @@ async function start() {
 
 
     // Features of the forces applied to the nodes:
-    var simulation = d3.forceSimulation()
+    const simulation = d3.forceSimulation()
         .force("center", d3.forceCenter().x(width / 2).y(height / 2.2)) // Attraction to the center of the svg area
         .force("charge", d3.forceManyBody().strength(1)) // Nodes are attracted one each other of value is > 0
         .force("collide", d3.forceCollide().strength(.1).radius(function(d){ return (size(d.totalKills)+6) }).iterations(5)) // Force that avoids circle overlapping
